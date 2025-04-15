@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-const streamUrl = "http://ns3076776.ip-217-182-194.eu:8000/";
+const streamUrl = "http://http://your_url_of_streaming:8000/";
 
 export default function AudioPlayer() {
   const audioRef = useRef(null);
