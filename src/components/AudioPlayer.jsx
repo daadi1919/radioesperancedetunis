@@ -28,7 +28,7 @@ export default function AudioPlayer() {
       <div className="rounded-lg overflow-hidden bg-black shadow-inner">
         <audio
           ref={audioRef}
-          src="https://ns3076776.ip-217-182-194.eu/stream"
+          src="http://your_url_of_streaming:8000/stream"
           preload="auto"
           autoPlay
           controls
