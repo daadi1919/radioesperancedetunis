@@ -12,14 +12,14 @@
 - **Mobile** : Capacitor (pour APK Android)
 - **Backend** : Serveur Debian 12 (OVH)
 - **Audio** : HTML5 audio player connecté à Shoutcast
-- **Hébergement** : www.radioesperancedetunis.com
+- **Hébergement** : www.yourwebsite.com
 - **SSL** : Let's Encrypt via Nginx
 
 ---
 
 ## 🎧 Fonctionnalités
 
-- 📡 Streaming en direct via [Shoutcast](http://ns3076776.ip-217-182-194.eu:8000/stream)
+- 📡 Streaming en direct via [Shoutcast](http://your_url_of_streaming:8000/stream)
 - 🔊 Lecteur audio moderne avec autoplay
 - 📱 Application responsive et compatible mobile
 - 🌐 Version APK Android générée avec Capacitor
