@@ -1,0 +1,60 @@
+import { useRef, useState, useEffect } from "react";
+
+const streamUrl = "http://ns3076776.ip-217-182-194.eu:8000/";
+
+export default function AudioPlayer() {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(1.0);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = volume;
+      audio.play().then(() => setIsPlaying(true)).catch(console.error);
+    }
+  }, []);
+
+  const play = () => {
+    audioRef.current.play();
+    setIsPlaying(true);
+  };
+
+  const pause = () => {
+    audioRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  const stop = () => {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+    setIsPlaying(false);
+  };
+
+  const increaseVolume = () => {
+    const newVolume = Math.min(volume + 0.1, 1.0);
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+
+  const decreaseVolume = () => {
+    const newVolume = Math.max(volume - 0.1, 0.0);
+    setVolume(newVolume);
+    audioRef.current.volume = newVolume;
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <audio ref={audioRef} src={streamUrl} preload="auto" />
+      <div className="flex gap-4">
+        <button onClick={play} className="px-4 py-2 bg-green-600 text-white rounded-lg shadow">Play</button>
+        <button onClick={pause} className="px-4 py-2 bg-yellow-500 text-white rounded-lg shadow">Pause</button>
+        <button onClick={stop} className="px-4 py-2 bg-red-600 text-white rounded-lg shadow">Stop</button>
+      </div>
+      <div className="flex gap-4">
+        <button onClick={increaseVolume} className="px-4 py-2 bg-blue-600 text-white rounded-lg shadow">Volume +</button>
+        <button onClick={decreaseVolume} className="px-4 py-2 bg-blue-400 text-white rounded-lg shadow">Volume -</button>
+      </div>
+    </div>
+  );
+}
